@@ -18,6 +18,12 @@ module.exports = webpackMerge(commonConfig, {
 	], devServer: {
 		contentBase: helpers.root("public_html"),
 		historyApiFallback: true,
-		stats: "minimal"
+		stats: "minimal",
+		proxy: {
+			"/api": {
+				target: targetUrl(),
+				secure: false
+			}
+		}
 	}
 });
